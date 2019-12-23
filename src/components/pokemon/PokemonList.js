@@ -16,6 +16,7 @@ export default class PokemonList extends Component {
     render() {
         return (
             <React.Fragment>
+                
                 {this.state.pokemon ? 
                     (<div className = 'row'>
                         {this.state.pokemon.map(pokemon=> {

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import spinner from '../pokemon/spinner.gif'
 
@@ -19,6 +20,19 @@ const Card = styled.div`
     -o-user-select: none;
 
 `;
+
+const StyledLink = styled(Link)`
+    text-decoration: none;
+    color: black;
+    &:focus,
+    &:hover,
+    &:visited,
+    &.link,
+    &:active{
+        text-decoration:none;
+    }
+
+`
 
 export default class PokemonCard extends Component {
     state= {
@@ -46,37 +60,39 @@ export default class PokemonCard extends Component {
             
             <div className = 'col-md-2 col-sm-6 mb-5'>
                 
-                <Card className = 'card'>
-                    <h5 className = 'card-header'>#{this.state.pokemonIndex}</h5>
-                    {this.state.imageLoading ? (
-                        <img src = {spinner}  
-                        className = 'card-img-top mx-auto mt-5'
-                        style = {{width: "5em",height:"5em"}}
-                        ></img>
-                    ):null}
-                    {/* <img onLoad = {() => this.setState({imageLoading: false})} onError = {() => this.setState({error:true})} style = {this.state.error ? {display: "none"}:null,this.state.imageLoading ? null:{display: "block"},{width: "120px", height: "120px", backgroundPosition: "50% 50%", position:"relative",float:"left",backgroundSize:"cover",backgroundRepeat:"no-repeat"}} className = 'card-img-top mx-auto mt-2'  src = {this.state.img}></img> */}
-                    <Sprite
-                    className="card-img-top rounded mx-auto mt-2"
-                    src={this.state.img}
-                    onLoad={() => this.setState({ imageLoading: false })}
-                    onError={() => this.setState({ error: true })}
-                    style={
-                    this.state.error
-                        ? { display: 'none' }
-                        : this.state.imageLoading
-                        ? null
-                        : { display: 'block' }
-              }
-            />
-                    {
-                    this.state.error ? (<h6 className = 'mx-auto'>
-                        <span className = 'badge badge-danger mt-2'>Too many requests</span>
-                    </h6>):null
-                    } 
-                    <div className = 'card-body mx-auto'>
-                        <h6 className= 'card-title '>{this.state.name.toLowerCase().split(" ").map(letter => letter.charAt(0).toUpperCase() + letter.substring(1)).join(" ")}</h6>
-                    </div>
-                </Card>
+                <StyledLink to = {`pokemon/${this.state.pokemonIndex}`}>
+                    <Card className = 'card'>
+                        <h5 className = 'card-header'>#{this.state.pokemonIndex}</h5>
+                        {this.state.imageLoading ? (
+                            <img src = {spinner}  
+                            className = 'card-img-top mx-auto mt-5'
+                            style = {{width: "5em",height:"5em"}}
+                            ></img>
+                        ):null}
+                        {/* <img onLoad = {() => this.setState({imageLoading: false})} onError = {() => this.setState({error:true})} style = {this.state.error ? {display: "none"}:null,this.state.imageLoading ? null:{display: "block"},{width: "120px", height: "120px", backgroundPosition: "50% 50%", position:"relative",float:"left",backgroundSize:"cover",backgroundRepeat:"no-repeat"}} className = 'card-img-top mx-auto mt-2'  src = {this.state.img}></img> */}
+                        <Sprite
+                        className="card-img-top rounded mx-auto mt-2"
+                        src={this.state.img}
+                        onLoad={() => this.setState({ imageLoading: false })}
+                        onError={() => this.setState({ error: true })}
+                        style={
+                        this.state.error
+                            ? { display: 'none' }
+                            : this.state.imageLoading
+                            ? null
+                            : { display: 'block' }
+                        }
+                        />
+                        {
+                        this.state.error ? (<h6 className = 'mx-auto'>
+                            <span className = 'badge badge-danger mt-2'>Too many requests</span>
+                        </h6>):null
+                        } 
+                        <div className = 'card-body mx-auto'>
+                            <h6 className= 'card-title '>{this.state.name.toLowerCase().split(" ").map(letter => letter.charAt(0).toUpperCase() + letter.substring(1)).join(" ")}</h6>
+                        </div>
+                    </Card>
+                </StyledLink>
             </div>
         )
     }
