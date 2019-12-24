@@ -46,8 +46,12 @@ export default class PokemonCard extends Component {
     componentDidMount(){
         const {name,url}  = this.props;
         const pokemonIndex = url.split('/')[url.split('/').length - 2];
+        //icon sprites, set Sprite to 40x30
+        //const img = `https://img.pokemondb.net/sprites/sun-moon/icon/${name}.png`
+        //animated bw sprite const img = `https://img.pokemondb.net/sprites/black-white/anim/normal/${name}.gif`
+        //static 
         const img = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemonIndex}.png`; 
-        //const img = `https://projectpokemon.org/images/normal-sprite/${name}.gif`
+        // gen7 animated const img = `https://projectpokemon.org/images/normal-sprite/${name}.gif`
         this.setState({
                         name,
                         img,
