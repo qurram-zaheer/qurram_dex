@@ -5,13 +5,18 @@ import Pokemon from './Pokemon';
 import Scroll from './Scroll'
 import SearchBox from './SearchBox';
 
+
+const redButton = {
+    boxShadow: "0 1px 3px rgba(255,0,0,0.6), 0 1px 2px rgba(0,0,0,0.24)",
+    // backgroundColor: "#ff0"
+}
 export default class PokemonList extends Component {
     constructor(){
         super()
         this.handler = this.handler.bind(this)
     }
     state= {
-        url: 'https://pokeapi.co/api/v2/pokemon/?limit=649',
+        url: 'https://pokeapi.co/api/v2/pokemon/?limit=804',
         showDetails: false,
         pokemonIndex: 0,
         searchField: '', 
@@ -24,12 +29,13 @@ export default class PokemonList extends Component {
             showDetails:true,
             pokeIndex:index
         })
+
     }
 
     async componentDidMount(){
         const res = await axios.get(this.state.url);
         this.setState({pokemon: res.data['results'],
-                       });
+                       filtered: res.data['results']});
     }
 
 
@@ -38,10 +44,8 @@ export default class PokemonList extends Component {
         this.setState({searchField: value})
         console.log(this.state.searchField)
         const filtered = await this.state.pokemon.filter(pokemon => 
-            pokemon.name.toLowerCase().includes(this.state.searchField.toLowerCase()))
+            pokemon.name.toLowerCase().includes(value.toLowerCase()))
         this.setState({filtered: filtered})
-        
-        
     }
 
     render() {
@@ -63,6 +67,7 @@ export default class PokemonList extends Component {
                                         name = {pokemon.name}
                                         url = {pokemon.url}
                                         onChange = {this.handler}
+                                       buttonColor = {redButton}
                                         />
                                         
                                 })}
@@ -75,12 +80,12 @@ export default class PokemonList extends Component {
                                 <Pokemon index = {this.state.pokeIndex}/>
                             </div>)
                             : (<div className =''>
-                                <h2>Click a card on the left for more details!</h2>
+                                <h2 style = {{color: "#b6b6b6"}}><i>Click a card on the left for more details!</i></h2>
                             </div>)
                         }
                     </div>
                     )
-                    :(<h1>Loading Pokemon</h1>)}
+                    :(<h2 style = {{color: "#b6b6b6"}}><i>Loading Pokemon</i></h2>)}
             </React.Fragment>
             
             

@@ -9,10 +9,10 @@ const Sprite = styled.img`
     display: none;
 `
 const Card = styled.div`
-    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    box-shadow: 0 8px 3px rgba(255,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
     transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
     &:hover{
-        box-shadow: 0 14px 28px rgba(0,0,0,0.25),0 10px 10px rgba(0,0,0,0.22)
+        box-shadow: 0 14px 28px rgba(255,0,0,0.25),0 10px 10px rgba(0,0,0,0.22)
     }
     -moz-user-select: none;
     -website-user-select: none;
@@ -54,10 +54,22 @@ export default class PokemonCard extends Component {
     }
 
     componentDidMount(){
-        const {name,url}  = this.props;
+        const url = this.props.url;
+        let name1 = '';
+            if(this.props.name === 'mimikyu-disguised'){
+                console.log('kyu')
+                name1 = 'mimikyu'
+            }
+            else if(this.props.name === 'minior-red-meteor'){
+                console.log('mini')
+                name1 = 'minior-meteor'
+            }
+            else {
+                name1 = this.props.name
+            }
         const pokemonIndex = url.split('/')[url.split('/').length - 2];
         //icon sprites, set Sprite to 40x30
-        const img = `https://img.pokemondb.net/sprites/sun-moon/icon/${name}.png`
+        const img = `https://img.pokemondb.net/sprites/sun-moon/icon/${name1}.png`
         //animated bw sprite 
         //const img = `https://img.pokemondb.net/sprites/black-white/anim/normal/${name}.gif`
         //static 
@@ -65,7 +77,7 @@ export default class PokemonCard extends Component {
         // gen7 animated 
         //const img = `https://projectpokemon.org/images/normal-sprite/${name}.gif`
         this.setState({
-                        name,
+                        name: name1,
                         img,
                         pokemonIndex
                     });   
