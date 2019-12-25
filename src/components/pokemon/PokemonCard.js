@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import spinner from '../pokemon/spinner.gif'
 
 const Sprite = styled.img`
-    width: 5em;
-    height: 5em;
+    width: 30px;
+    height: 30px;
     display: none;
 `
 const Card = styled.div`
@@ -21,37 +21,49 @@ const Card = styled.div`
 
 `;
 
-const StyledLink = styled(Link)`
-    text-decoration: none;
-    color: black;
-    &:focus,
-    &:hover,
-    &:visited,
-    &.link,
-    &:active{
-        text-decoration:none;
-    }
+// const StyledLink = styled(Link)`
+//     text-decoration: none;
+//     color: black;
+//     &:focus,
+//     &:hover,
+//     &:visited,
+//     &.link,
+//     &:active{
+//         text-decoration:none;
+//     }
 
-`
+// `
 
 export default class PokemonCard extends Component {
+    constructor(props){
+        super(props);
+        this.handleChange = this.handleChange.bind(this);
+  }
+    
     state= {
         name: '',
         img: '',
         pokemonIndex: '',
         imageLoading: true,
-        error: false
+        error: false,
+    }
+
+    handleChange(index){
+        this.props.onChange(this.state.pokemonIndex)
+        console.log(this.state.pokemonIndex)
     }
 
     componentDidMount(){
         const {name,url}  = this.props;
         const pokemonIndex = url.split('/')[url.split('/').length - 2];
         //icon sprites, set Sprite to 40x30
-        //const img = `https://img.pokemondb.net/sprites/sun-moon/icon/${name}.png`
-        //animated bw sprite const img = `https://img.pokemondb.net/sprites/black-white/anim/normal/${name}.gif`
+        const img = `https://img.pokemondb.net/sprites/sun-moon/icon/${name}.png`
+        //animated bw sprite 
+        //const img = `https://img.pokemondb.net/sprites/black-white/anim/normal/${name}.gif`
         //static 
-        const img = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemonIndex}.png`; 
-        // gen7 animated const img = `https://projectpokemon.org/images/normal-sprite/${name}.gif`
+        //const img = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemonIndex}.png`; 
+        // gen7 animated 
+        //const img = `https://projectpokemon.org/images/normal-sprite/${name}.gif`
         this.setState({
                         name,
                         img,
@@ -61,43 +73,47 @@ export default class PokemonCard extends Component {
 
     render() {
         return (
-            
-            <div className = 'col-md-2 col-sm-6 mb-5'>
-                
-                <StyledLink to = {`pokemon/${this.state.pokemonIndex}`}>
-                    <Card className = 'card'>
-                        <h5 className = 'card-header'>#{this.state.pokemonIndex}</h5>
-                        {this.state.imageLoading ? (
-                            <img src = {spinner}  
-                            className = 'card-img-top mx-auto mt-5'
-                            style = {{width: "5em",height:"5em"}}
-                            ></img>
-                        ):null}
-                        {/* <img onLoad = {() => this.setState({imageLoading: false})} onError = {() => this.setState({error:true})} style = {this.state.error ? {display: "none"}:null,this.state.imageLoading ? null:{display: "block"},{width: "120px", height: "120px", backgroundPosition: "50% 50%", position:"relative",float:"left",backgroundSize:"cover",backgroundRepeat:"no-repeat"}} className = 'card-img-top mx-auto mt-2'  src = {this.state.img}></img> */}
-                        <Sprite
-                        className="card-img-top rounded mx-auto mt-2"
-                        src={this.state.img}
-                        onLoad={() => this.setState({ imageLoading: false })}
-                        onError={() => this.setState({ error: true })}
-                        style={
-                        this.state.error
-                            ? { display: 'none' }
-                            : this.state.imageLoading
-                            ? null
-                            : { display: 'block' }
-                        }
-                        />
-                        {
-                        this.state.error ? (<h6 className = 'mx-auto'>
-                            <span className = 'badge badge-danger mt-2'>Too many requests</span>
-                        </h6>):null
-                        } 
-                        <div className = 'card-body mx-auto'>
-                            <h6 className= 'card-title '>{this.state.name.toLowerCase().split(" ").map(letter => letter.charAt(0).toUpperCase() + letter.substring(1)).join(" ")}</h6>
-                        </div>
-                    </Card>
-                </StyledLink>
-            </div>
+                            <div onClick = {this.handleChange}>
+                                
+                            {/* <StyledLink to = {`pokemon/${this.state.pokemonIndex}`}> */}
+                                <Card  className = 'card mb-2 ml-2' style = {{width: "50px"}}>
+                                    {/* <h5 className = 'card-header'>#{this.state.pokemonIndex}</h5> */}
+                                    {this.state.imageLoading ? (
+                                        <img src = {spinner}  
+                                        className = 'card-img-top mx-auto'
+                                        style = {{width: "30px",height:"30px"}}
+                                        alt = 'loading'
+                                        ></img>
+                                    ):null}
+                                    <Sprite
+                                    className="card-img-top rounded mx-auto"
+                                    src={this.state.img}
+                                    onLoad={() => this.setState({ imageLoading: false })}
+                                    onError={() => this.setState({ error: true })}
+                                    style={
+                                    this.state.error
+                                        ? { display: 'none' }
+                                        : this.state.imageLoading
+                                        ? null
+                                        : { display: 'block' }
+                                    }
+                                    />
+                                    {
+                                    this.state.error ? (<h6 className = 'mx-auto'>
+                                        <span className = 'badge badge-danger mt-2'>Too many requests</span>
+                                    </h6>):null
+                                    } 
+                                    {/* <div className = 'card-body mx-auto'>
+                                        <h6 className= 'card-title '>{this.state.name
+                                        .toLowerCase()
+                                        .split(" ")
+                                        .map(letter => 
+                                        letter.charAt(0).toUpperCase() + letter.substring(1))
+                                        .join(" ")}</h6>
+                                    </div> */}
+                                </Card>
+                            {/* </StyledLink> */}
+                            </div>
         )
     }
 }

@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Router, Route, Link } from "react-router-dom";
+// import { Router, Route, Link } from "react-router-dom";
 import './card.css';
-import Button from './Button';
-import GoBack from './GoBack';
+// import Button from './Button';
+// import GoBack from './GoBack';
 
 
 const TYPE_COLORS = {
@@ -54,12 +54,14 @@ export default class Pokemon extends Component {
     }
 
     async componentDidMount(){
-        const{ pokemonIndex } = this.props.match.params;
+      console.log(this.props.index);
+        const pokemonIndex = this.props.index  ;
 
         //URLS
         const pokemonUrl = `https://pokeapi.co/api/v2/pokemon/${pokemonIndex}/`;
         const pokemonSpeciesUrl = `https://pokeapi.co/api/v2/pokemon-species/${pokemonIndex}/`;
 
+        console.log(pokemonUrl);
         ///info
         const pokemonResponse = await axios.get(pokemonUrl);
 
@@ -88,7 +90,10 @@ export default class Pokemon extends Component {
                 case 'special-defense':
                     specialDefense = stat['base_stat'];       
                     break;
+                default:
+                  break;
             }
+            return 0;
         })
 
         
@@ -104,8 +109,8 @@ export default class Pokemon extends Component {
                 ability => ability.ability.name.toLowerCase()
                 .split("-")
                 .map(s=> s.charAt(0).toUpperCase() 
-                + s.substring(1)).
-                join(" ")
+                + s.substring(1))
+                .join(" ")
                 ).join(', ')
         
         const evs = pokemonResponse.data.stats.filter(stat => {
@@ -115,8 +120,8 @@ export default class Pokemon extends Component {
             return `${stat.effort} ${stat.stat.name.toLowerCase()
                 .split("-")
                 .map(s=> s.charAt(0).toUpperCase() 
-                + s.substring(1)).
-                join(" ")}`
+                + s.substring(1))
+                .join(" ")}`
         }).join(', ')
 
         //get flavor text, egg group, gender ratio, steps, catch rate
@@ -125,8 +130,9 @@ export default class Pokemon extends Component {
             res.data.flavor_text_entries.some(flavor => {
                 if (flavor.language.name === 'en') {
                     description = flavor.flavor_text;
-                    return;
+                    return ;
             }
+            
         });
 
             const femaleRate = res.data['gender_rate'];
@@ -141,8 +147,7 @@ export default class Pokemon extends Component {
                 .toLowerCase()
                 .split("-")
                 .map(s=> s.charAt(0).toUpperCase() 
-                + s.substring(1)).
-                join(" ")
+                + s.substring(1)).join(" ")
             ).join(', ');
 
             const hatchSteps = 255 * (res.data['hatch_counter'] + 1);
@@ -186,9 +191,9 @@ export default class Pokemon extends Component {
         return (
           <div className = 'row'>
             <div className = 'col-md-1'>
-             <div className = 'row'>
+             {/* <div className = 'row'>
             <GoBack />
-            </div>
+            </div> */}
             </div>
               <div className = 'col'>
               <div className="card">
@@ -225,6 +230,7 @@ export default class Pokemon extends Component {
                       <img
                         src={this.state.imageUrl}
                         className="card-img-top rounded mx-auto mt-2"
+                        alt = ''
                       />
                     </div>
                     <div className="col-md-9">
@@ -419,7 +425,7 @@ export default class Pokemon extends Component {
                 </div>
                 <hr />
                 <div className="card-body">
-                  <h5 class="card-title text-center">Profile</h5>
+                  <h5 className="card-title text-center">Profile</h5>
                   <div className="row">
                     <div className="col-md-6">
                       <div className="row">
@@ -445,9 +451,9 @@ export default class Pokemon extends Component {
                           <h6 className="float-right">Gender Ratio:</h6>
                         </div>
                         <div className="col-6">
-                          <div class="progress">
+                          <div className="progress">
                             <div
-                              class="progress-bar"
+                              className="progress-bar"
                               role="progressbar"
                               style={{
                                 width: `${this.state.genderRatioFemale}%`,
@@ -460,7 +466,7 @@ export default class Pokemon extends Component {
                               <small>{this.state.genderRatioFemale}</small>
                             </div>
                             <div
-                              class="progress-bar"
+                              className="progress-bar"
                               role="progressbar"
                               style={{
                                 width: `${this.state.genderRatioMale}%`,
@@ -506,9 +512,9 @@ export default class Pokemon extends Component {
                     </div>
                   </div>
                 </div>
-                <div class="card-footer text-muted">
+                <div className="card-footer text-muted">
                   Data From{' '}
-                  <a href="https://pokeapi.co/" target="_blank" className="card-link">
+                  <a href="https://pokeapi.co/" target="_blank" className="card-link" rel="noopener noreferrer">
                     PokeAPI.co
                   </a>
                 </div>
