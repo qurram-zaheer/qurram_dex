@@ -469,13 +469,13 @@ export default class Pokemon extends Component {
               </div>
               <div className="row mt-1">
                 <div className="col">
-                  <p className="">{this.state.description}</p>
+                  <p style = {{padding: "10px"}}>{this.state.description}</p>
                 </div>
               </div>
             </div>
             <hr />
             <div className="card-body">
-              <h5 className="card-title text-center">Profile</h5>
+              
               <div className="row">
                 <div className="col-md-6">
                   <div className="row">

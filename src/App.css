@@ -5,11 +5,7 @@
   /* background-color:  #ef5350 !important; */
 }  
 .navbar {
-  /* background-color:  #ef5350 !important; */
-}
-
-.scroll {
-  /* background-color:  #ef5350 !important; */
-  
+  background-color:  white !important;
+  border-bottom: 2px solid grey;
 }
 
