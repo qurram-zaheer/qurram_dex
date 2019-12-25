@@ -50,7 +50,7 @@ export default class PokemonCard extends Component {
 
     handleChange(index){
         this.props.onChange(this.state.pokemonIndex)
-        console.log(this.state.pokemonIndex)
+        
     }
 
     componentDidMount(){
@@ -76,7 +76,7 @@ export default class PokemonCard extends Component {
                             <div onClick = {this.handleChange}>
                                 
                             {/* <StyledLink to = {`pokemon/${this.state.pokemonIndex}`}> */}
-                                <Card  className = 'card mb-2 ml-2' style = {{width: "50px"}}>
+                                <Card  className = 'card mb-2 ml-2 mt-1' style = {{width: "50px"}}>
                                     {/* <h5 className = 'card-header'>#{this.state.pokemonIndex}</h5> */}
                                     {this.state.imageLoading ? (
                                         <img src = {spinner}  
