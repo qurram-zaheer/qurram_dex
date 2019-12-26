@@ -119,7 +119,7 @@ export default class Pokemon extends Component {
       1000;
 
     //convert hectometers to grams
-    const weight = pokemonResponse.data.weight * 100;
+    const weight = pokemonResponse.data.weight/10;
 
     const types = pokemonResponse.data.types.map(type => type.type.name);
 
@@ -216,12 +216,12 @@ export default class Pokemon extends Component {
       
         
         
-          <div className="card shadow-card font">
+          <div className="card shadow-card font mt-2">
             
             <div className="card-header">
               <div className="row">
-                <div className="col-5">
-                  <h5>#{this.state.pokemonIndex}</h5>
+                <div className="col-5 def-font mt-1">
+                  <h4>#{this.state.pokemonIndex}</h4>
                 </div>
                 <div className="col-7">
                   <div className="float-right">
@@ -229,7 +229,7 @@ export default class Pokemon extends Component {
                     {this.state.types.map(type => (
                       <span
                         key={type}
-                        className="badge badge-pill mr-1"
+                        className="badge badge-pill mr-1 def-font"
                         style={{
                           backgroundColor: `#${TYPE_COLORS[type]}`,
                           color: "white"
@@ -254,7 +254,7 @@ export default class Pokemon extends Component {
                                         <img src = {spinner}  
                                         className = 'card-img-top mx-auto'
                                         
-                                        alt = 'loading'
+                                        alt = ''
                                         ></img>
                                     ):null}
                   <Sprite
@@ -269,11 +269,12 @@ export default class Pokemon extends Component {
                 </div>
                 <div className="col-md-9">
                   <h4 className="mx-auto">
-                    {this.state.name
+                    <b>{this.state.name
                       .toLowerCase()
                       .split("-")
                       .map(s => s.charAt(0).toUpperCase() + s.substring(1))
                       .join(" ")}
+                      </b>
                   </h4>
                   <div className="row align-items-center">
                     <div
@@ -478,7 +479,7 @@ export default class Pokemon extends Component {
                 </div>
               </div>
               <div className="row mt-1">
-                <div className="col">
+                <div className="col def-font">
                   <p style = {{padding: "10px"}}>{this.state.description}</p>
                 </div>
               </div>
@@ -490,25 +491,25 @@ export default class Pokemon extends Component {
                 <div className="col-md-6">
                   <div className="row">
                     <div className="col-6">
-                      <h6 className="float-right">Height:</h6>
+                      <h6 className="float-right"><b>Height:</b></h6>
                     </div>
                     <div className="col-6">
                       <h6 className="float-left">{this.state.height} ft.</h6>
                     </div>
                     <div className="col-6">
-                      <h6 className="float-right">Weight:</h6>
+                      <h6 className="float-right"><b>Weight:</b></h6>
                     </div>
                     <div className="col-6">
-                      <h6 className="float-left">{this.state.weight} lbs</h6>
+                      <h6 className="float-left">{this.state.weight} kgs</h6>
                     </div>
                     <div className="col-6">
-                      <h6 className="float-right">Catch Rate:</h6>
+                      <h6 className="float-right"><b>Catch Rate:</b></h6>
                     </div>
                     <div className="col-6">
                       <h6 className="float-left">{this.state.catchRate}%</h6>
                     </div>
                     <div className="col-6">
-                      <h6 className="float-right">Gender Ratio:</h6>
+                      <h6 className="float-right"><b>Gender Ratio:</b></h6>
                     </div>
                     <div className="col-6">
                       <div className="progress">
@@ -545,25 +546,25 @@ export default class Pokemon extends Component {
                 <div className="col-md-6">
                   <div className="row">
                     <div className="col-6">
-                      <h6 className="float-right">Egg Groups:</h6>
+                      <h6 className="float-right"><b>Egg Groups:</b></h6>
                     </div>
                     <div className="col-6">
                       <h6 className="float-left">{this.state.eggGroups} </h6>
                     </div>
                     <div className="col-6">
-                      <h6 className="float-right">Hatch Steps:</h6>
+                      <h6 className="float-right"><b>Hatch Steps:</b></h6>
                     </div>
                     <div className="col-6">
                       <h6 className="float-left">{this.state.hatchSteps}</h6>
                     </div>
                     <div className="col-6">
-                      <h6 className="float-right">Abilities:</h6>
+                      <h6 className="float-right"><b>Abilities:</b></h6>
                     </div>
                     <div className="col-6">
                       <h6 className="float-left">{this.state.abilities}</h6>
                     </div>
                     <div className="col-6">
-                      <h6 className="float-right">EVs:</h6>
+                      <h6 className="float-right"><b>EVs:</b></h6>
                     </div>
                     <div className="col-6">
                       <h6 className="float-left">{this.state.evs}</h6>
