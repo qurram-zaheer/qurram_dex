@@ -80,12 +80,12 @@ export default class PokemonList extends Component {
                                 <Pokemon index = {this.state.pokeIndex}/>
                             </div>)
                             : (<div className =''>
-                                <h2 style = {{color: "#b6b6b6"}}><i>Click a card on the left for more details!</i></h2>
+                                <h2 class = 'mt-2' style = {{color: "#b6b6b6"}}><i>Click a card on the left for more details!</i></h2>
                             </div>)
                         }
                     </div>
                     )
-                    :(<h2 style = {{color: "#b6b6b6"}}><i>Loading Pokemon</i></h2>)}
+                    :(<h3 style = {{color: "#b6b6b6"}}><i>Loading Pokemon...</i></h3>)}
             </React.Fragment>
             
             

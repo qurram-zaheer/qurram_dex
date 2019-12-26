@@ -57,11 +57,11 @@ export default class PokemonCard extends Component {
         const url = this.props.url;
         let name1 = '';
             if(this.props.name === 'mimikyu-disguised'){
-                console.log('kyu')
+                
                 name1 = 'mimikyu'
             }
             else if(this.props.name === 'minior-red-meteor'){
-                console.log('mini')
+                
                 name1 = 'minior-meteor'
             }
             else {
