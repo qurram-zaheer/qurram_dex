@@ -1,5 +1,4 @@
 import React,{ Component } from 'react';
-import {HashRouter as Router, Route, Switch} from 'react-router-dom';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import NavBar from './components/layout/Navbar';

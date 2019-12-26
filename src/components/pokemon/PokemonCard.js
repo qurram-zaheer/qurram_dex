@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import spinner from '../pokemon/spinner.gif'
 
@@ -21,18 +20,6 @@ const Card = styled.div`
 
 `;
 
-// const StyledLink = styled(Link)`
-//     text-decoration: none;
-//     color: black;
-//     &:focus,
-//     &:hover,
-//     &:visited,
-//     &.link,
-//     &:active{
-//         text-decoration:none;
-//     }
-
-// `
 
 export default class PokemonCard extends Component {
     constructor(props){
@@ -87,9 +74,9 @@ export default class PokemonCard extends Component {
         return (
                             <div onClick = {this.handleChange}>
                                 
-                            {/* <StyledLink to = {`pokemon/${this.state.pokemonIndex}`}> */}
+                            
                                 <Card  className = 'card mb-2 ml-3 mt-1' style = {{width: "50px"}}>
-                                    {/* <h5 className = 'card-header'>#{this.state.pokemonIndex}</h5> */}
+                                    
                                     {this.state.imageLoading ? (
                                         <img src = {spinner}  
                                         className = 'card-img-top mx-auto'
