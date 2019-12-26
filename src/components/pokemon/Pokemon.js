@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import spinner from './spinner.gif'
-import "./card.css";
+import "../../App.css"
 import styled from 'styled-components';
 
 
@@ -297,7 +297,7 @@ export default class Pokemon extends Component {
                         >
                           <small className = 'def-font'><b>{this.state.stats.hp}</b></small>
                         </div>
-                        <div
+                        {/* <div
                           className="progress-bar bar-white"
                           style={{
                             width: `${(200 - this.state.stats.hp) / 2}%`
@@ -305,7 +305,7 @@ export default class Pokemon extends Component {
                           aria-valuenow="70"
                           aria-valuemin="0"
                           aria-valuemax="100"
-                        />
+                        /> */}
                       </div>
                     </div>
                   </div>
@@ -330,7 +330,7 @@ export default class Pokemon extends Component {
                         >
                           <small className = 'def-font'><b>{this.state.stats.attack}</b></small>
                         </div>
-                        <div
+                        {/* <div
                           className="progress-bar bar-white"
                           style={{
                             width: `${(200 - this.state.stats.attack) / 2}%`
@@ -338,7 +338,7 @@ export default class Pokemon extends Component {
                           aria-valuenow="70"
                           aria-valuemin="0"
                           aria-valuemax="100"
-                        />
+                        /> */}
                       </div>
                     </div>
                   </div>
@@ -363,7 +363,7 @@ export default class Pokemon extends Component {
                         >
                           <small className = 'def-font'><b>{this.state.stats.defense}</b></small>
                         </div>
-                        <div
+                        {/* <div
                           className="progress-bar bar-white"
                           style={{
                             width: `${(200 - this.state.stats.defense) / 2}%`
@@ -371,7 +371,7 @@ export default class Pokemon extends Component {
                           aria-valuenow="70"
                           aria-valuemin="0"
                           aria-valuemax="100"
-                        />
+                        /> */}
                       </div>
                     </div>
                   </div>
@@ -396,7 +396,7 @@ export default class Pokemon extends Component {
                         >
                           <small className = 'def-font'><b>{this.state.stats.specialAttack}</b></small>
                         </div>
-                        <div
+                        {/* <div
                           className="progress-bar bar-white"
                           style={{
                             width: `${(200 - this.state.stats.specialAttack) /
@@ -405,7 +405,7 @@ export default class Pokemon extends Component {
                           aria-valuenow="70"
                           aria-valuemin="0"
                           aria-valuemax="100"
-                        />
+                        /> */}
                       </div>
                     </div>
                   </div>
@@ -430,7 +430,7 @@ export default class Pokemon extends Component {
                         >
                           <small className = 'def-font'><b>{this.state.stats.specialDefense}</b></small>
                         </div>
-                        <div
+                        {/* <div
                           className="progress-bar bar-white"
                           style={{
                             width: `${(200 - this.state.stats.specialDefense) /
@@ -439,7 +439,7 @@ export default class Pokemon extends Component {
                           aria-valuenow="70"
                           aria-valuemin="0"
                           aria-valuemax="100"
-                        />
+                        /> */}
                       </div>
                     </div>
                   </div>
@@ -464,7 +464,7 @@ export default class Pokemon extends Component {
                         >
                           <small className = 'def-font'><b>{this.state.stats.speed}</b></small>
                         </div>
-                        <div
+                        {/* <div
                           className="progress-bar bar-white"
                           style={{
                             width: `${(200 - this.state.stats.speed) / 2}%`
@@ -472,7 +472,7 @@ export default class Pokemon extends Component {
                           aria-valuenow="70"
                           aria-valuemin="0"
                           aria-valuemax="100"
-                        />
+                        /> */}
                       </div>
                     </div>
                   </div>
