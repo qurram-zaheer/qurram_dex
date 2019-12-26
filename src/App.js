@@ -8,7 +8,7 @@ import Pokemon from './components/pokemon/Pokemon';
 class App extends Component{
   render(){
     return (
-      <Router>
+      
         <div className = 'App'>
           <NavBar />
           
@@ -17,7 +17,7 @@ class App extends Component{
             
           </div>
         </div>
-    </Router>
+    
       
     )
   } 
