@@ -9,15 +9,15 @@
 }  
 .navbar {
   background-color:  white !important;
-  border-bottom: 2px solid grey;
+  border-bottom: 2px solid lightgrey;
   font-family: 'Hanalei Fill', cursive;
-  color: rgba(255,0,0,0.6) !important;
+  color: rgba(255, 11, 11, 0.767) !important;
 }
 
 .navbar-brand {
   font-size: 30px !important;
   letter-spacing: 0.2em;
-  text-shadow: 4px 0 0 #fff, -4px 0 0 #fff, 0 4px 0 #fff, 0 -4px 0 #fff, 2px 2px #fff, -2px -2px 0 #fff, 2px -2px 0 #fff, -2px 2px 0 #fff;
+  text-shadow: 4px 0 0 lightgrey, -4px 0 0 lightgrey, 0 4px 0 lightgrey, 0 -4px 0 lightgrey, 2px 2px lightgrey, -2px -2px 0 lightgrey, 2px -2px 0 lightgrey, -2px 2px 0 lightgrey;
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
